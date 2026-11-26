@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Blink Buddy</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="popup">
+  <section class="panel" id="panel">
+    <div id="art"></div>
+    <div class="time" id="time" role="timer"></div>
+    <div class="label" id="label">until your next eye break</div>
+    <label class="switch"><span>Eye breaks</span><input type="checkbox" role="switch" id="on" aria-label="Eye breaks every 20 minutes"><i></i></label>
+    <label class="check" id="overlayRow"><input type="checkbox" id="overlay"><span>Show breaks over the page</span></label>
+    <div class="links">
+      <button class="link" id="now">Take a break now</button>
+      <button class="link" id="customize">Customize</button>
+    </div>
+  </section>
+  <script src="theme.js"></script>
+  <script src="art.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

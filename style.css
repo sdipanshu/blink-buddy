@@ -1,0 +1,65 @@
+/* Colours come from the chosen theme (theme.js sets these variables); amber is the fallback. */
+:root {
+  color-scheme: light dark;
+  --bg: #fbeee0; --fg: #2a1d12; --mut: #8a7766; --line: #3a2a1d; --accent: #d9772b; --lid: #efc9a4; --off: #cdbfb2;
+  --white: #fffdfa;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #2d2118; --fg: #f5ece4; --mut: #a8988a; --line: #e4d6c9; --accent: #e98a3c; --lid: #70492b; --off: #5a4d43; --white: #f5efe8; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 14px/1.3 system-ui, "Segoe UI", sans-serif; user-select: none; transition: background .3s; }
+.panel { display: flex; flex-direction: column; align-items: center; padding: 20px 20px 18px; }
+
+/* Character art */
+.art { width: 118px; height: 165px; overflow: visible; display: block; }
+.outline { fill: none; stroke: var(--line); stroke-width: 2.5; stroke-linejoin: round; }
+.white { fill: var(--white); }
+.iris { fill: var(--accent); }
+.pupil { fill: #21160e; }
+.glint { fill: #fff; }
+.lid { fill: var(--lid); stroke: var(--line); stroke-width: 2.5; stroke-linejoin: round; transition: d 1s cubic-bezier(.3, .7, .3, 1); }
+.lashes { fill: none; stroke: var(--line); stroke-width: 2.5; stroke-linecap: round; transition: d 1s cubic-bezier(.3, .7, .3, 1); }
+.ring-track { fill: none; stroke: var(--off); stroke-width: 7; opacity: .6; }
+.ring { fill: none; stroke: var(--accent); stroke-width: 7; stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
+.emoji { font-size: 50px; font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif; }
+
+.time { margin: 12px 0 2px; font-size: 32px; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.label { color: var(--mut); font-size: 12px; margin-bottom: 14px; text-align: center; }
+
+.switch { display: flex; align-items: center; justify-content: space-between; width: 100%; font-size: 15px; font-weight: 600; cursor: pointer; }
+.switch input { position: absolute; opacity: 0; pointer-events: none; }
+.switch i { width: 46px; height: 26px; border-radius: 13px; background: var(--off); position: relative; transition: background .2s; }
+.switch i::after { content: ""; position: absolute; left: 3px; top: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: transform .2s; }
+.switch input:checked + i { background: var(--accent); }
+.switch input:checked + i::after { transform: translateX(20px); }
+.switch input:focus-visible + i { outline: 2px solid var(--fg); outline-offset: 2px; }
+
+.check { display: flex; align-items: center; gap: 8px; width: 100%; margin-top: 12px; font-size: 13px; color: var(--fg); cursor: pointer; }
+.check input { width: 16px; height: 16px; margin: 0; accent-color: var(--accent); cursor: pointer; }
+.check[hidden] { display: none; }
+.links { display: flex; gap: 14px; margin-top: 12px; }
+.link { padding: 0; border: 0; background: none; color: var(--mut); font: inherit; font-size: 12px; text-decoration: underline; cursor: pointer; }
+.link:hover { color: var(--fg); }
+.link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+.link[hidden] { display: none; }
+
+.panel.off .art { filter: grayscale(1); opacity: .55; }
+.panel.off .time { color: var(--mut); }
+
+/* No animation on first paint. */
+body.still .lid, body.still .lashes, body.still .ring, body.still .switch i, body.still .switch i::after { transition: none; }
+@media (prefers-reduced-motion: reduce) { .lid, .lashes, .ring { transition: none; } }
+
+/* Popup */
+body.popup { width: 230px; }
+
+/* Break window */
+body.reminder { height: 100vh; overflow: hidden; }
+.reminder .panel { min-height: 100vh; justify-content: center; text-align: center; }
+.reminder h1 { margin: 12px 0 4px; font-size: 22px; line-height: 1.2; }
+.reminder p { margin: 0; font-size: 15px; }
+.reminder .time { margin: 14px 0 0; font-size: 48px; }
+.reminder .actions { display: flex; gap: 10px; margin-top: 20px; min-height: 38px; }
+button.plain { font: inherit; padding: 8px 16px; border-radius: 8px; border: 1.5px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
+button.plain:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
