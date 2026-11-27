@@ -30,7 +30,7 @@ A Chrome extension that helps you follow the 20-20-20 rule: every 20 minutes, lo
 
 ## Photos and privacy
 
-A photo you upload is looked at on your computer, with Chrome's built-in Gemini Nano when it's available, or by sampling its colours when it isn't. The photo is never uploaded or saved; only the chosen character and colour are kept. Blink Buddy collects no data and makes no network requests. See the [privacy policy](docs/privacy.html).
+A photo you upload is looked at on your computer, with Chrome's built-in Gemini Nano when it's available, or by sampling its colours when it isn't. The photo is never uploaded or saved; only the chosen character and colour are kept. Blink Buddy collects no data and makes no network requests. See the [privacy policy](https://sdipanshu.github.io/blink-buddy/privacy.html).
 
 ## Build the store package
 
